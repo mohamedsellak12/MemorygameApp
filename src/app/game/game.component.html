@@ -1,0 +1,40 @@
+<div class="game-board">
+    <div class="game-info">
+      <img src="gameLogo.png" alt="" srcset="">
+      <div>
+        <p>Turns : {{ moves }}</p>
+        <p>Matches : {{ trys }}/12</p>
+        <p>Best Score : <strong *ngIf="bestScore!=100">{{ bestScore }}</strong></p>
+      </div>
+      <div>
+        <button (click)="resetGame()">Rejouer</button><br>
+        <button routerLink="/" >Menu</button>
+      </div>
+    </div>
+    <div class="grid">
+      <app-card
+        *ngFor="let card of cards"
+        [card]="card"
+        [disableClick]="disableClick"
+        >
+      </app-card>
+</div>
+  </div>
+  <div *ngIf="trys === 12" class="overlay"></div>
+  <div *ngIf="breakTheScre" class="popup">
+    <h3>🎉 Congrat! You've won!</h3>
+    <h6>You did it in {{ moves }} turns!</h6>
+    <h6>🌟 New Record: {{ bestScore }} turns! 🌟</h6>
+    <button (click)="resetGame()">Try Again</button>
+    <button routerLink="/">Menu</button>
+  </div>
+  <div *ngIf="!breakTheScre && trys === 12 " class="popup">
+    <h3>🎉 Congrat! You've won!</h3>
+    <h6>But you did it in {{ moves }} turns, try again and break the Record 👊</h6>
+    <button (click)="resetGame()">Try Again</button>
+    <button routerLink="/">Menu</button>
+  </div>
+  
+  
+  
+

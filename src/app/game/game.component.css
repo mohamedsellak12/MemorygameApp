@@ -1,0 +1,200 @@
+/* Conteneur principal */
+.game-board {
+  margin: 0px;
+    padding: 0px;
+    text-align: center;
+    position: absolute fixed;    
+  }
+  /* Grille contenant les cartes */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); /* 4 colonnes */
+    grid-template-rows: repeat(4, 1fr); /* 6 lignes */
+    gap: 10px; /* Espacement entre les cellules */
+    justify-content: center;
+    background: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Cartes individuelles */
+  app-card {
+    width: 100%;
+    height: 100%;
+  }
+/* Conteneur de la section game-info */
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 15px;
+    text-align: center;
+    background-color: #f8f9fa; /* Couleur douce pour l'arrière-plan */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour donner de la profondeur */
+  }
+  
+  /* Style du texte (compteur de coups) */
+  .game-info p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #555; /* Couleur douce pour le texte */
+    margin-bottom: 10px;
+  }
+  img {
+    max-width: 130px;
+    max-height: 80px;
+    margin-right: 10px;
+    animation: float 2s infinite ease-in-out;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  /* Style du bouton "Rejouer" */
+  button {
+    height: 49px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff; /* Bleu pour le bouton */
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Variation de couleur au survol */
+    transform: scale(1.05); /* Effet d'agrandissement */
+  }
+  
+  button:active {
+    transform: scale(1); /* Réduction lors du clic */
+    box-shadow: none; /* Supprime l'ombre temporairement */
+  }
+
+  /* Conteneur de la popup */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent noir */
+    z-index: 999; /* Assurez-vous que l'overlay est au-dessus des autres éléments */
+  }
+
+/* General popup styling */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%; /* For smaller screens */
+  max-width: 400px;
+  background: linear-gradient(135deg, #4caf50, #81c784);
+  color: white;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  animation: popup-show 1.3s ease;
+}
+
+/* Add animation for the popup */
+@keyframes popup-show {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Popup title */
+.popup h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Popup description */
+.popup h6 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 500;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Buttons container */
+.popup button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 5px;
+  color: #fff;
+  background-color: #50c9c3;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover effects for buttons */
+.popup button:hover {
+  background-color: #4a90e2;
+  transform: scale(1.05);
+}
+
+.popup button:active {
+  transform: scale(0.95);
+  box-shadow: none;
+}
+
+/* Overlay background for dimming effect */
+.popup::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .popup {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .popup h3 {
+    font-size: 20px;
+  }
+
+  .popup h6 {
+    font-size: 16px;
+  }
+
+  .popup button {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+}
+

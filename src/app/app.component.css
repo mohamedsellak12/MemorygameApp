@@ -1,0 +1,96 @@
+/* Conteneur principal */
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* S'ajuste à la taille de l'écran */
+    background-image: url('/gazon.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 10px; /* Ajout d'espacement pour les petits écrans */
+  }
+  
+  /* Logo de jeu */
+  .logo {
+    max-width: 1000px;
+    margin-bottom: 20px;
+    animation: float 2s infinite ease-in-out;
+  }
+
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  /* Bouton "Play" */
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff; /* Couleur bleue */
+    text-decoration: none;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Ombre douce */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  a:hover {
+    background-color: #0056b3; /* Couleur plus sombre au survol */
+    transform: scale(1.05); /* Agrandir légèrement au survol */
+  }
+  
+  a:active {
+    transform: scale(0.95); /* Réduire légèrement lors du clic */
+  }
+  
+  /* Icône "Play" */
+  a i {
+    margin-right: 8px;
+    font-size: 20px;
+  }
+  
+  /* Styles responsives */
+  @media (max-width: 768px) {
+    img {
+      max-width: 150px; /* Réduire la taille du logo */
+    }
+  
+    a {
+      padding: 8px 16px;
+      font-size: 16px; /* Réduire la taille de la police */
+      color: black;
+    }
+  
+    a i {
+      font-size: 18px; /* Réduire la taille de l'icône */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    img {
+      max-width: 100px; /* Logo encore plus petit */
+    }
+  
+    a {
+      padding: 6px 12px;
+      font-size: 14px; /* Police plus petite pour petits écrans */
+    }
+  
+    a i {
+      font-size: 16px;
+      margin-right: 5px; /* Réduire l'espacement */
+    }
+  }
+  

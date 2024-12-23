@@ -1,0 +1,98 @@
+/* Conteneur principal de la carte */
+.card {
+    width: 90px;
+    height: 120px;
+    perspective: 1000px; /* Perspective pour l'effet 3D */
+    cursor: pointer;
+    margin: auto;
+  }
+  
+  .card.revealed .card-front {
+    transform: rotateY(0deg); /* Face avant visible */
+  }
+  
+  .card.revealed .card-back {
+    transform: rotateY(180deg); /* Face arrière cachée */
+  }
+  
+  /* Conteneur pour l'effet de retournement */
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Masque la face arrière */
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    transition: transform 0.6s ease; /* Animation du retournement */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style de la face avant (contenu révélé) */
+  .card-front {
+    background-color: #ffe4b5; /* Couleur douce pour la face avant */
+    color: #333;
+    transform: rotateY(180deg); /* Caché initialement */
+  }
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  /* Style de la face arrière (contenu masqué) */
+  .card-back {
+    background-image: url('/Gool.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+    transform: rotateY(0deg); 
+    
+  }
+  span{
+    animation: float 1.5s infinite ease-in-out;
+  }
+  @keyframes float {
+    0%, 100% {
+      transform: translateX(10px);
+      transform:rotate(40deg);
+    
+    }
+    50% {
+      transform: translateX(-10px);
+    
+
+    }
+  }
+
+  .card.disabled {
+    pointer-events: none; /* Désactive les clics */
+  }
+  .card.matched ::before{
+    z-index: -1;
+  }
+  .card.matched .card-front {
+    
+    background-color: #64f586; /* Couleur verte pour correspondance réussie */
+    color: white; /* Texte blanc */
+    border: 2px solid #1e7e34; /* Bordure plus foncée */
+    /* Mettre en valeur */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    animation: bounce 0.4s ease;
+    z-index: 1000;
+  }
+  @keyframes bounce {
+    0%, 100% {
+      transform: scale(1.1);
+    }
+    50% {
+      transform: scale(1.6);
+    }
+  }
+  
+  

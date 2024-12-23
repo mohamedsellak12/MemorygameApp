@@ -15,6 +15,7 @@ import { GameService } from './services/game.service';
 export class AppComponent implements OnInit {
   title = 'MemoryGame';
   isGameRoute: boolean = false;
+  isAboutRoute: boolean = false;
   moves:number=0;
   trys:number=0
 
@@ -29,5 +30,8 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe(() => {
       this.isGameRoute = this.router.url === '/game';
     });
+    this.router.events.subscribe(() => {
+      this.isAboutRoute=this.router.url === '/about';
+    })
   }
 }

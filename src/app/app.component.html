@@ -1,10 +1,19 @@
-<div *ngIf="!isGameRoute">
+<div *ngIf="!isGameRoute && !isAboutRoute">
     <!-- Contenu visible uniquement sur les autres routes -->
     <img src="gameLogo.png" class="logo" alt="Game Logo">
-    <a routerLink="/game">
-        <i class="fas fa-play"></i> 
-      Play
-    </a>
+    <div class="link">
+      <a routerLink="/game">
+          <i class="fas fa-play"></i> 
+        Play
+      </a><br>
+      <br>
+      <a routerLink="/about">
+        <i class="fas fa-info-circle"></i>
+        About
+      </a>
+    </div>
+      
+
     <!-- <div>
       <img src="Ball.png" calss="ball" alt="">
     </div> -->

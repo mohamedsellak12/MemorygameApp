@@ -1,7 +1,10 @@
 .about-container {
     padding: 20px;
-    background: transparent;
-    color: #97b5b4;
+    background-color: aliceblue;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    color: #000000;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     max-width: 600px;

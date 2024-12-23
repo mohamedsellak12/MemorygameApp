@@ -34,7 +34,7 @@
   
   /* Style de la face avant (contenu révélé) */
   .card-front {
-    background-color: #ffe4b5; /* Couleur douce pour la face avant */
+    background-color:transparent; /* Couleur douce pour la face avant */
     color: #333;
     transform: rotateY(180deg); /* Caché initialement */
   }
@@ -76,22 +76,29 @@
   .card.matched ::before{
     z-index: -1;
   }
-  .card.matched .card-front {
-    
-    background-color: #64f586; /* Couleur verte pour correspondance réussie */
+  .card.matched .card-front{
+  
     color: white; /* Texte blanc */
-    border: 2px solid #1e7e34; /* Bordure plus foncée */
-    /* Mettre en valeur */
+     /* Bordure plus foncée */
+    
     transition: transform 0.3s ease, background-color 0.3s ease;
     animation: bounce 0.4s ease;
     z-index: 1000;
   }
+  .card.matched .card-front img{
+    width: 70%;
+    height: 70%;
+    border: solid green 3px;/* Mettre en valeur */
+  }
+  
   @keyframes bounce {
     0%, 100% {
       transform: scale(1.1);
     }
     50% {
       transform: scale(1.6);
+    }75%{
+      transform: scale(1.05);
     }
   }
   

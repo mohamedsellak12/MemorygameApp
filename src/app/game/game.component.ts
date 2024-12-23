@@ -45,7 +45,8 @@ export class GameComponent implements OnInit {
   }
   onCardClick(card: Card) {
     if (!card.revealed) {
-      card.revealed = true;
+        card.revealed = true;
+      
       this.selectedCards.push(card); // Ajout au tableau typé
       if (this.selectedCards.length === 2 ) {
         this.checkMatch();
@@ -61,7 +62,7 @@ export class GameComponent implements OnInit {
         card1.revealed = false;
         card2.revealed = false;
         this.gameService.active();
-      }, 500);
+      }, 1000);
 
       
     }else if(card1.symbol === card2.symbol){

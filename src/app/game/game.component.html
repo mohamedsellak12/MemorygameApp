@@ -6,8 +6,9 @@
         <p>Matches : {{ trys }}/12</p>
         <p>Best Score : <strong *ngIf="bestScore!=100">{{ bestScore }}</strong></p>
       </div>
-      <div>
-        <button (click)="resetGame()">Rejouer</button><br>
+      <div class="btn">
+        <button (click)="resetGame()">
+          Rejouer</button>
         <button routerLink="/" >Menu</button>
       </div>
     </div>

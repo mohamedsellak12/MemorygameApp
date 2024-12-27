@@ -1,6 +1,6 @@
 import { Component, Input, Output } from '@angular/core';
 import { Card } from '../Card';
-import { EventEmitter } from 'stream';
+// import { EventEmitter } from 'stream';
 import { CommonModule } from '@angular/common';
 import { CardService } from '../services/card.service';
 

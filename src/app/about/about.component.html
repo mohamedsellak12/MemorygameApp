@@ -1,26 +1,44 @@
 <div class="about-container">
-    <h1>About the Game</h1>
-    <p>Welcome to the <strong>Memory Match Football Edition</strong>!</p>
-    
-    <p>In this game, your goal is to find the two matching cards featuring the same football player. Each card displays an image of a football player, and your task is to remember the positions of the cards and match them correctly.</p>
+  <h1>About the Game</h1>
+  <p>Welcome to the <strong>Memory Match Football Edition</strong>!</p>
   
-    <p><strong>Game Rules:</strong></p>
-    <ul>
-      <li>The game consists of 24 cards, each with a football player's image on one side.</li>
-      <li>You will need to find the two cards that match by flipping them over one at a time.</li>
-      <li>If the two cards match, they remain face up. If they don't, they are flipped back down.</li>
-      <li>The game ends when all the cards are matched!</li>
-    </ul>
-  
-    <p><strong>Tips:</strong></p>
-    <ul>
-      <li>Try to remember the location of the cards as you flip them.</li>
-      <li>Take your time, and good luck matching those players!</li>
-    </ul>
-  
-    <p><strong>High Score:</strong> Keep track of your best score! Try to beat it each time you play.</p>
-  
-    <button routerLink="/game">Play <i class="fa fa-arrow-right"></i></button>
-    <button routerLink="/"> <i class="fa fa-arrow-left"></i> Back to Menu</button>
-  </div>
-  
+  <p>In this game, your goal is to find the two matching cards featuring the same football player. Each card displays an image of a football player, and your task is to remember the positions of the cards and match them correctly before the time runs out.</p>
+
+  <p><strong>Game Rules:</strong></p>
+  <ul>
+    <li>The game consists of 24 cards, each with a football player's image on one side.</li>
+    <li>You will need to find the two cards that match by flipping them over one at a time.</li>
+    <li>If the two cards match, they remain face up. If they don't, they are flipped back down.</li>
+    <li>You have <strong>3 minutes</strong> to match all cards! The game ends either when all cards are matched or when the timer reaches 0.</li>
+  </ul>
+
+  <p><strong>Game Features:</strong></p>
+  <ul>
+    <li>A timer that starts from <strong>3 minutes</strong> and counts down to 0.</li>
+    <li>A scoreboard showing:
+      <ul>
+        <li><strong>Turns</strong>: The number of moves you’ve made.</li>
+        <li><strong>Matches</strong>: The number of pairs you've successfully found.</li>
+        <li><strong>Best Score</strong>: Your lowest number of moves in a successful game.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Button Functions in Game:</strong></p>
+  <ul>
+    <li><strong>🔄 Reset Game:</strong> Resets the current game. All cards are shuffled, the timer is reset, and your progress is cleared.</li>
+    <li><strong>📋 Menu:</strong> Returns to the main menu without saving the current game's progress.</li>
+    <li><strong>Reset Best Score:</strong> Clears your best score and allows you to start fresh with a new record to beat.</li>
+  </ul>
+
+  <p><strong>Tips:</strong></p>
+  <ul>
+    <li>Try to remember the location of the cards as you flip them.</li>
+    <li>Use the timer wisely to manage your moves and match all pairs before time runs out!</li>
+  </ul>
+
+  <p><strong>High Score:</strong> Can you beat your best record? Keep track of your moves and aim for perfection!</p>
+
+  <button routerLink="/"> <i class="fa fa-arrow-left"></i> Back to Menu</button>
+  <button routerLink="/game">Play <i class="fa fa-arrow-right"></i></button>
+</div>

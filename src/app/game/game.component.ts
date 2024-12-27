@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CardComponent } from "../card/card.component";
 import { Card } from '../Card';
 import { CommonModule } from '@angular/common';
@@ -13,7 +13,7 @@ import { GameService } from '../services/game.service';
   styleUrl: './game.component.css'
 })
 
-export class GameComponent implements OnInit {
+export class GameComponent implements OnInit,OnDestroy {
   
   cards:Card[] = this.shuffleCards([...this.generateCards()]);
   selectedCards: Card[] = [];
@@ -22,9 +22,14 @@ export class GameComponent implements OnInit {
   disableClick = false;
   bestScore:number = 100;
   breakTheScre :boolean=false;
+  seconds=180;
+  isRunning = false;
+  private interval:any;
+  isOver:boolean=false;
   constructor (private carsService:CardService , private gameService:GameService){
 
   }
+ 
   
   ngOnInit(): void {
     this.carsService.cardClicked$.subscribe((card)=>{
@@ -32,6 +37,8 @@ export class GameComponent implements OnInit {
     })
     
     this.resetGame()
+    // this.isRunning=true;
+
     this.gameService.disableClick$.subscribe(d=>{
       this.disableClick=d 
     })
@@ -41,8 +48,18 @@ export class GameComponent implements OnInit {
         this.bestScore=JSON.parse(bestScoreStored);
       }
     }
-
   }
+  ngOnDestroy(): void {
+    clearInterval(this.interval)
+  }
+  FormaTime(seconds:number){
+    const mins = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
+    
+    return `${mins.toString()
+      .padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  }
+
   onCardClick(card: Card) {
     if (!card.revealed) {
         card.revealed = true;
@@ -77,12 +94,25 @@ export class GameComponent implements OnInit {
     this.selectedCards = []; // Réinitialise le tableau
   }
   checkBestScore(): void {
-    if(this.trys==12 && this.moves<this.bestScore){
-      this.bestScore=this.moves +1;
-      if(typeof localStorage!="undefined"){
-        localStorage.setItem('bestScore', JSON.stringify(this.bestScore));
+    if(this.trys==12 ){
+      this.isRunning=false
+      if(this.moves<this.bestScore){
+        this.bestScore=this.moves +1;
         this.breakTheScre=true;
+        if(typeof localStorage!="undefined"){
+          localStorage.setItem('bestScore', JSON.stringify(this.bestScore));
+        }
+      }else{
+        this.breakTheScre=false;
       }
+    }
+  }
+  resetThrecored(){
+    this.gameService.score$.subscribe(score=>{
+      this.bestScore=score;
+    })
+    if(typeof localStorage!="undefined"){
+      localStorage.removeItem('bestScore');
     }
   }
 
@@ -94,9 +124,29 @@ export class GameComponent implements OnInit {
     this.gameService.try$.subscribe(trys=>{
       this.trys=trys
     })
+    this.gameService.isOver$.subscribe(isOver=>{
+      this.isOver=isOver;
+    })
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+    this.isRunning=true;
+    this.interval = setInterval(()=>{
+      if(this.isRunning){
+        this.seconds--;
+        const mins=Math.floor((this.seconds % 3600)/60)
+        const secs = this.seconds % 60;
+        if(mins===0 && secs===0){
+          this.isRunning=false;
+          this.gameService.gameOver();
+          this.gameService.active();
+        }
+      }
+    },1000)
+   
     this.gameService.reset();
-    this.breakTheScre=false
-
+    this.breakTheScre=false;
+    this.seconds=120;
    
     
   }

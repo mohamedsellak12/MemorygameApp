@@ -9,9 +9,13 @@ export class GameService {
   moves$=this.movesSubject.asObservable();
   private trySubject=new BehaviorSubject<number>(0);
   try$=this.trySubject.asObservable();
+  private scoreSubject=new BehaviorSubject<number>(100);
+  score$=this.scoreSubject.asObservable();
 
   private disableClickSubject=new BehaviorSubject<boolean>(false);
   disableClick$=this.disableClickSubject.asObservable();
+  private isOverSubject=new BehaviorSubject<boolean>(false)
+  isOver$=this.isOverSubject.asObservable();
 
 
   desactiveClick(){
@@ -23,6 +27,7 @@ export class GameService {
   reset(){
     this.movesSubject.next(0);
     this.trySubject.next(0);
+    this.isOverSubject.next(false);
  
   }
   incrementMoves(){
@@ -30,6 +35,12 @@ export class GameService {
   }
   incrementTry(){
     this.trySubject.next(this.trySubject.value+1);
+  }
+  resetScore(){
+    this.scoreSubject.next(100);
+  }
+  gameOver(){
+    this.isOverSubject.next(true);
   }
  
 }

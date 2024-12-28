@@ -23,6 +23,8 @@
     width: 100%;
     height: 100%;
   }
+ 
+
 /* Conteneur de la section game-info */
 .game-info {
     display: flex;
@@ -217,4 +219,62 @@ h3{
     padding: 8px 15px;
   }
 }
+
+/* Styling the timer container */
+.timer {
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #0ad081; /* Fresh green for visibility */
+  background: linear-gradient(90deg, #0ad081, #50c9c3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(10, 208, 129, 0.7);
+  margin: 20px auto;
+  padding: 10px 20px;
+  border: 3px solid #50c9c3;
+  border-radius: 10px;
+  width: fit-content;
+  animation: pulse 1.5s infinite;
+}
+.timerDanger{
+  font-family: 'Arial', sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  color: #ec0808; /* Fresh green for visibility */
+  background: linear-gradient(90deg, #d00a0a, #5b0133);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px #b00c0c;
+  margin: 20px auto;
+  padding: 10px 20px;
+  border: 3px solid #d31339;
+  border-radius: 10px;
+  width: fit-content;
+  animation: pulseD 1.5s infinite;
+}
+/* Subtle pulsing animation for the timer */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(10, 208, 129, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(10, 208, 129, 0.8);
+  }
+}
+@keyframes pulseD {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(208, 10, 10, 0.5);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(208, 10, 10, 0.5);
+  }
+}
+
 

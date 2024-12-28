@@ -24,6 +24,7 @@ export class GameComponent implements OnInit,OnDestroy {
   breakTheScre :boolean=false;
   seconds=180;
   isRunning = false;
+  isDanger:boolean=false;
   private interval:any;
   isOver:boolean=false;
   constructor (private carsService:CardService , private gameService:GameService){
@@ -94,7 +95,7 @@ export class GameComponent implements OnInit,OnDestroy {
     this.selectedCards = []; // Réinitialise le tableau
   }
   checkBestScore(): void {
-    if(this.trys==12 ){
+    if(this.trys===12 ){
       this.isRunning=false
       if(this.moves<this.bestScore){
         this.bestScore=this.moves +1;
@@ -138,8 +139,12 @@ export class GameComponent implements OnInit,OnDestroy {
         const secs = this.seconds % 60;
         if(mins===0 && secs===0){
           this.isRunning=false;
+          
           this.gameService.gameOver();
           this.gameService.active();
+        }
+        if(mins==0 && secs==30){
+          this.isDanger=true;
         }
       }
     },1000)
@@ -147,6 +152,7 @@ export class GameComponent implements OnInit,OnDestroy {
     this.gameService.reset();
     this.breakTheScre=false;
     this.seconds=120;
+    this.isDanger=false;
    
     
   }

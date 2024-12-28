@@ -7,7 +7,10 @@
         <p>Best Score : <strong *ngIf="bestScore!=100">{{ bestScore }}</strong></p>
       </div>
       <div>
-        <h3>
+        <h3 *ngIf="!isDanger" class="timer">
+          {{ FormaTime(seconds) }}
+        </h3>
+        <h3  *ngIf="isDanger" class="timerDanger">
           {{ FormaTime(seconds) }}
         </h3>
         <div class="btn">
@@ -21,8 +24,11 @@
              Reset 
           </button>
         </div>
+        
       </div>
     </div>
+    
+    
     <div class="grid">
       <app-card
         *ngFor="let card of cards"

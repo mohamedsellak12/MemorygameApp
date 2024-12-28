@@ -17,6 +17,9 @@ export class GameService {
   private isOverSubject=new BehaviorSubject<boolean>(false)
   isOver$=this.isOverSubject.asObservable();
 
+  private isRunningSubject=new BehaviorSubject<boolean>(false)
+  isRunning$=this.isRunningSubject.asObservable();
+
 
   desactiveClick(){
     this.disableClickSubject.next(true);
@@ -41,6 +44,12 @@ export class GameService {
   }
   gameOver(){
     this.isOverSubject.next(true);
+  }
+  stopRunning(){
+    this.isRunningSubject.next(false);
+  }
+  startRunning(){
+    this.isRunningSubject.next(true);
   }
  
 }

@@ -96,7 +96,7 @@ export class GameComponent implements OnInit,OnDestroy {
   }
   checkBestScore(): void {
     if(this.trys===12 ){
-      this.isRunning=false
+      this.gameService.stopRunning();
       if(this.moves<this.bestScore){
         this.bestScore=this.moves +1;
         this.breakTheScre=true;
@@ -128,17 +128,20 @@ export class GameComponent implements OnInit,OnDestroy {
     this.gameService.isOver$.subscribe(isOver=>{
       this.isOver=isOver;
     })
+    this.gameService.isRunning$.subscribe(run=>{
+      this.isRunning=run;
+    })
     if (this.interval) {
       clearInterval(this.interval);
     }
-    this.isRunning=true;
+    this.gameService.startRunning();
     this.interval = setInterval(()=>{
       if(this.isRunning){
         this.seconds--;
         const mins=Math.floor((this.seconds % 3600)/60)
         const secs = this.seconds % 60;
         if(mins===0 && secs===0){
-          this.isRunning=false;
+          this.gameService.stopRunning()
           
           this.gameService.gameOver();
           this.gameService.active();

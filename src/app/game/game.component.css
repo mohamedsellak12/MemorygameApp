@@ -223,7 +223,7 @@ h3{
 /* Styling the timer container */
 .timer {
   font-family: 'Arial', sans-serif;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
   color: #0ad081; /* Fresh green for visibility */
@@ -240,7 +240,7 @@ h3{
 }
 .timerDanger{
   font-family: 'Arial', sans-serif;
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: bold;
   text-align: center;
   color: #ec0808; /* Fresh green for visibility */

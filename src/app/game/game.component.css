@@ -200,9 +200,10 @@ h3{
 }
 
 /* Responsive adjustments */
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+ 
   .popup {
-    width: 95%;
+    width: 50%;
     padding: 15px;
   }
 
@@ -219,6 +220,7 @@ h3{
     padding: 8px 15px;
   }
 }
+
 
 /* Styling the timer container */
 .timer {

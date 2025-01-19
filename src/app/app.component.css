@@ -63,6 +63,7 @@
   
   /* Styles responsives */
   @media (max-width: 768px) {
+   
     img {
       max-width: 150px; /* Réduire la taille du logo */
     }
@@ -70,7 +71,6 @@
     a {
       padding: 8px 16px;
       font-size: 16px; /* Réduire la taille de la police */
-      color: black;
     }
   
     a i {
@@ -78,7 +78,11 @@
     }
   }
   
-  @media (max-width: 480px) {
+  @media (max-width: 450px) {
+    :host{
+      height: 100%;
+      width: 100%;
+    }
     img {
       max-width: 100px; /* Logo encore plus petit */
     }
